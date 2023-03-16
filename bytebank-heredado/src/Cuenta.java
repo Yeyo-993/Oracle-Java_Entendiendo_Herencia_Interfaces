@@ -1,13 +1,15 @@
 
-public class Cuenta {
-	private double saldo;
+public abstract class Cuenta {
+	protected double saldo;
 	private int agencia;
 	private int numero;
 	private Cliente titular = new Cliente();
 	
 	private static int total;
 	
-	
+	public Cuenta() {
+		
+	}
 	
 	public Cuenta(int agencia, int numero) {
 		if(agencia <= 0) {
@@ -22,9 +24,7 @@ public class Cuenta {
 	}
 	
 	//No retornan valor
-	public void depositar(double valor){
-		this.saldo += valor;
-	}
+	public abstract void depositar(double valor);
 	
 	//Retornar valor
 	public boolean retirar(double valor) {
@@ -44,16 +44,6 @@ public class Cuenta {
         }
         return false;
     }
-	
-	/*public boolean transferir(double valor, Cuenta cuenta){
-		if(this.saldo >= valor) {
-			this.saldo -= valor;
-			cuenta.depositar(valor);
-			return true;
-		} else {
-			return false;
-		}
-	}*/
 	
 	public double getSaldo(){
 		return this.saldo;
